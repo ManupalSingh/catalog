@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+{% include "header.html" %}
+		<div class="row banner main">
+		<div class="col-md-12">
+			<h1> {{ manufacturer.name }} </h1>
+		</div>
+	</div>
+<br>
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+	<div class="row">
+		<div class="col-md-12">
+			<a href="{{url_for('editManufacturer', manufacturer_id = manufacturer.id )}}">
+				<button class="btn btn-primary">
+					Edit Manufacturer
+				</button>
+			</a>
+			<a href="{{url_for('newCandy', manufacturer_id = manufacturer.id )}}">
+				<button class="btn btn-success">
+					Add Candy to Manufacturer
+				</button>
+			</a>
+						<a href="{{url_for('deleteManufacturer', manufacturer_id = manufacturer.id )}}">
+				<button class="btn btn-danger">
+					Delete Manufacturer
+				</button>
+			</a>
+		</div>
+	</div>
+	
+	
+	<div class="col-md-12" style="margin-top: 20px">
+          
+            {% for candy in candies %}
+              <a href = "{{url_for('showCandyDetails', candy_id = candy.id)}}">
+                <p>{{ candy.name }}</p>
+              </a>
+        <a href='{{url_for('editCandy', manufacturer_id = manufacturer.id, candy_id=candy.id ) }}'>Edit</a> | 
+								<a href='{{url_for('deleteCandy', manufacturer_id = manufacturer.id, candy_id=candy.id ) }}'>Delete</a>
+                <br>
+            {% endfor %}
+            
+    </div>
+{% endblock %}

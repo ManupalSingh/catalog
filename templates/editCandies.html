@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="container">
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-md-10">
+               <h4>Update Candy Details</h4>
+
+			<form method = "POST">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="100" class="form-control" name="name" value="{{candy.name }}">
+				</div>
+				<div class="form-group">
+					<label for="description">Description:</label>
+					<textarea class="form-control" maxlength="250" rows="3" name="description">{{candy.description}}</textarea>
+				</div>
+				<div class="input-group">
+					<label for="price">Price:</label>
+						<div class="input-group-addon">$</div>
+						<input type ="text" maxlength="10" class="form-control" name="price" value="{{candy.price}}">
+				</div>
+				<div class="form-group">
+					<label for="manufacturedat">Manufacured At:</label>
+					
+					<textarea class="form-control" maxlength="250" rows="3" name="manufacturedat">{{candy.manufacturedat}}</textarea>
+				</div>
+					<button type="submit" class="btn btn-success" id="submit" type="submit">Update</button>
+				</form>
+				<br>
+				<br>
+					<a href = '{{url_for('Home')}}'><button class="btn btn-primary">Cancel</button></a>
+			
+			</div>
+		</div>
+	</div>
+{% endblock %}

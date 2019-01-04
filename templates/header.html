@@ -1,0 +1,15 @@
+<div class="row top-menu">
+	<div class="col-md-6">
+		<a href="{{url_for('Home')}}"><button class="btn btn-primary">
+			<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Show All Manufacturers
+		</button>
+		</a>
+	</div>
+	<div class="col-md-6 text-right" id="signinButton">
+			{% if 'username' not in session %}
+		<a href="{{url_for('showLogin')	}}"><button class="btn btn-success">Click here to login</button></a>
+		{% else %}
+		<a href="{{url_for('disconnect')}}"><button class="btn btn-danger">Log Out</button></a>
+		{% endif %}
+	</div>
+</div>

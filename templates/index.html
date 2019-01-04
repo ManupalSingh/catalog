@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %}
+{% include "header.html" %}
+	
+	<div class="row banner main">
+		<div class="col-md-1"></div>
+		<div class="col-md-11">
+			<h1>Candy Mania</h1>
+		</div>
+	</div>
+<br>
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+	<a href="{{url_for('newManufacturer')}}">
+	<button class="btn btn-primary">
+		+ Add Manufacturer
+	</button>
+	</a>
+		
+	<div class="container sections">  
+        <div class="row">
+        	<div class="col-md-7">
+        				<h3><u>Manufacturers</u></h3>
+						{% for manufacturer in manufacturers %}
+						<a href = "{{url_for('showCandies', manufacturer_id = manufacturer.id)}}">
+						<h3>{{manufacturer.name}}</h3>
+						</a>
+						{% endfor %}
+			</div>
+			<div class="offset-md-3"></div>
+			<div class="col-md-4">
+				<h3><u>Candies</u></h3>
+				{% for candy in candies %}
+				<a href = "{{url_for('showCandyDetails', candy_id = candy.id)}}">
+				<h4>{{candy.name}}</h4>
+				</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	
+{% endblock %}

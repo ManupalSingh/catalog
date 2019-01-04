@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>Edit {{manufacturer.name}}</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="{{ url_for('editManufacturer',manufacturer_id = manufacturer.id)}}" method = "post">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" class="form-control" name="name" value="{{manufacturer.name }}">
+					<div class="padding-bottom"></div>
+					<button type="submit" class="btn btn-primary" id="submit" type="submit">
+					Update</button>
+					</div>
+					</form>
+					<br>
+					<br>
+					<a href = '{{url_for('Home')}}'>
+						<button class="btn btn-primary">
+						 Cancel</button>
+					</a>
+				
+		</div>
+	</div>
+{% endblock %}

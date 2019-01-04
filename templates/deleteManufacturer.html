@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+{% include "header.html" %}
+<h2> Are you sure you want to delete {{manufacturer.name}}? </h2>
+
+<form action="#" method = 'post'>
+
+	<button type="submit" class="btn btn-danger" id="submit" type="submit">
+	Delete</button>
+</form>
+<br>
+<br>
+	<a href = '{{url_for('Home')}}'>
+		<button class="btn btn-primary">
+		Cancel</button>
+	</a>
+
+
+
+{% endblock %}

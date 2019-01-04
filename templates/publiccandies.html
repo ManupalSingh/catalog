@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div>
+		<div class="col-md-12">
+			<h1>{{ manufacturer.name }}
+			</h1>
+
+		</div>
+	</div>
+
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+<div class="col-md-12" style="margin-top: 20px">
+          
+            {% for candy in candies %}
+                <a href = "{{url_for('showCandyDetails', candy_id = candy.id)}}">
+                <p>{{ candy.name }}</p>
+                <br>
+                </a>
+            {% endfor %}
+</div>
+{% endblock %}
